@@ -1,6 +1,7 @@
 package com.example.congresslib;
 
 import com.example.congresslib.repository.AddBooksRepository;
+import com.example.congresslib.repository.Borrowbookrepo;
 import com.example.congresslib.repository.ListAllBooksrepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,13 +19,15 @@ public class MainController {
     AddBooksRepository addbooksrepo;
     @Autowired
     ListAllBooksrepo listallbooksrepo;
+    @Autowired
+    Borrowbookrepo borrowbookrepo;
 
     @RequestMapping("/")
     public String index() {
         return "index";
     }
 
-    @RequestMapping("/addlibrarybooks")
+    @GetMapping("/addlibrarybooks")
     public String addbooks(Model model) {
         model.addAttribute("addbooks", new Addbooks());
         return "addlibrarybooks";
@@ -42,12 +45,19 @@ public class MainController {
     public String listallbooks(Model model){
         model.addAttribute("addedbooks", addbooksrepo.findAll());
         return "listallbooks";
-    }
-    @RequestMapping("/borrowbook")
-    public String borrowbook(Model model){
-        model.addAttribute("booklist", listallbooksrepo.findAll());
+    }/*
+    @RequestMapping("/borrowbook/{id}")
+    public String borrowbook(@PathVariable("booktitle") long id, Model model){
+        model.addAttribute("booklist", listallbooksrepo.findOne(id));
         return "borrowbook";
-
     }
+    @PostMapping("/borrowbook")
+    public String processborrowbook(@Valid Borrowers borrowers, BindingResult result){
+    if (result.hasErrors()){
+        return "borrowbook";
+    }
+        borrowbookrepo.save(borrowers);
+        return "redirect:/";
+    }*/
 }
 

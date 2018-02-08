@@ -13,12 +13,17 @@
 
 <div class="row">
     <div class="col-sm-7">
-        <span>Library of congress books</span>
+        <h1>Library of congress books</h1>
 
         <ol id="addressbooks" th:each="addedbooks : ${addedbooks}" type="none" >
 
-            <li th:inline="text">[[${addedbooks.booktitle}]]  [[${addedbooks.author}]]
-                [[${addedbooks.yearOfPublication}]] [[${addedbooks.isbnNumber}]]</li>
+            <li th:inline="text">
+                Title: [[${addedbooks.booktitle}]] <br/>
+                Author: [[${addedbooks.author}]] <br/>
+                Year of publication: [[${addedbooks.yearOfPublication}]] <br/>
+                ISBN:  [[${addedbooks.isbnNumber}]] <br/>
+                Available:[[${addedbooks.bookavailable}]]<br/>
+            </li>
         </ol>
         <br/><br/>
     </div>

@@ -19,6 +19,7 @@ public class Addbooks {
     @NotNull
     private String yearOfPublication;
     private String isbnNumber;
+    private Boolean bookavailable;
 
     public long getId() {
         return id;
@@ -58,5 +59,13 @@ public class Addbooks {
 
     public void setIsbnNumber(String isbnNumber) {
         this.isbnNumber = isbnNumber;
+    }
+
+    public Boolean getBookavailable() {
+        return bookavailable;
+    }
+
+    public void setBookavailable(Boolean bookavailable) {
+        this.bookavailable = bookavailable;
     }
 }

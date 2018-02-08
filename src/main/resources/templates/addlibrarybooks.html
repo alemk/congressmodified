@@ -18,18 +18,20 @@
 
             <span th:if="${#fields.hasErrors('booktitle')}" th:errors="*{booktitle}"></span>
             <label>Title: </label>
-                <input type="text" th:field="*{booktitle}" class="form-control" />
+                <input type="text" th:field="*{booktitle}" />
 
             <span th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></span>
             <label>Author: </label>
-                <input type="text" th:field="*{author}" class="form-control"/>
+                <input type="text" th:field="*{author}" />
 
             <label>Year of Publication: </label>
-                <input type="date" th:field="*{yearOfPublication}" class="form-control"/>
+                <input type="date" th:field="*{yearOfPublication}" />
             <label>ISBN: </label>
-                <input type="text" th:field="*{isbnNumber}" class="form-control"/>
+                <input type="text" th:field="*{isbnNumber}" />
+            <label>Available: </label>
+                <input type="radio" th:field="*{bookavailable}" value="yes" checked="checked"/>
 
-                <input type="submit" value="submit" name="Add book"/>
+            <input type="submit" value="submit" name="Add book"/>
         </form>
     </div> <!-- form section ends here -->
 
