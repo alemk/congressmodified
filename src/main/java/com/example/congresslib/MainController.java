@@ -1,6 +1,7 @@
 package com.example.congresslib;
 
 import com.example.congresslib.repository.AddBooksRepository;
+import com.example.congresslib.repository.ListAllBooksrepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,12 +11,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
-import javax.xml.bind.Binder;
 
 @Controller
 public class MainController {
     @Autowired
     AddBooksRepository addbooksrepo;
+    @Autowired
+    ListAllBooksrepo listallbooksrepo;
 
     @RequestMapping("/")
     public String index() {
@@ -40,6 +42,12 @@ public class MainController {
     public String listallbooks(Model model){
         model.addAttribute("addedbooks", addbooksrepo.findAll());
         return "listallbooks";
+    }
+    @RequestMapping("/borrowbook")
+    public String borrowbook(Model model){
+        model.addAttribute("booklist", listallbooksrepo.findAll());
+        return "borrowbook";
+
     }
 }
 
