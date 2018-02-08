@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html class="homebody" lang="en" xmlns:th=" www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Libraby of congress</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+    <link th:href="@{'/css/stylesheet.css'}" rel="stylesheet"/>
+</head>
+<body>
+<div th:replace="base::navlinks"></div>
+
+<div class="row">
+    <div class="col-sm-7">
+        <span>Library of congress books</span>
+
+        <ol id="addressbooks" th:each="addedbooks : ${addedbooks}" type="none" >
+
+            <li th:inline="text">[[${addedbooks.booktitle}]]  [[${addedbooks.author}]]
+                [[${addedbooks.yearOfPublication}]] [[${addedbooks.isbnNumber}]]</li>
+        </ol>
+        <br/><br/>
+    </div>
+</div>
+<div th:replace="base::footerlinks"></div>
+</body>
+</html>

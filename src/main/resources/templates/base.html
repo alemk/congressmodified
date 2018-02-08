@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html class="homebody" lang="en" xmlns:th=" www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Library of congress</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+    <link th:href="@{'/css/stylesheet.css'}" rel="stylesheet"/>
+</head>
+<body>
+<div class="nav" th:fragment="navlinks"> <!-- navigation begins here -->
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <ul class="nav navbar-nav">
+                <li><a th:href="@{'/'}">home</a></li>
+                <li><a th:href="@{'addlibrarybooks'}">Add book</a></li>
+                <li><a th:href="@{'listallbooks'}">List books</a></li>
+                <li><a th:href="@{'borrowbook'}">Borrow books</a></li>
+                <li><a th:href="@{'returnbook'}">Return book</a></li>
+            </ul>
+        </div>
+    </nav>
+</div> <!-- navigation ends here-->
+
+<div th:fragment="footerlinks"><!-- footer nav begins here-->
+    <div class="row">
+        <div class="col-sm center">
+            Librrary of congress @Copyright.2018
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
