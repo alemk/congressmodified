@@ -22,6 +22,7 @@
                 Year of publication: [[${addedbooks.yearOfPublication}]] <br/>
                 ISBN:  [[${addedbooks.isbnNumber}]] <br/>
                 Available:[[${addedbooks.bookavailable}]]<br/>
+                <a th:href="@{/return/{id}(id=${addedbooks.id})}">Return</a>
             </li>
         </ul>
         <br/><br/>

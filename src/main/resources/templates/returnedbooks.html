@@ -23,6 +23,8 @@
                 Year of publication: [[${addedbooks.yearOfPublication}]] <br/>
                 ISBN:  [[${addedbooks.isbnNumber}]] <br/>
                 Available:[[${addedbooks.bookavailable}]]<br/>
+                <a th:href="@{/borrow/{id}(id=${addedbooks.id})}">Borrow</a> <br/>
+
             </li>
         </ul>
         <br/><br/>

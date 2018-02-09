@@ -65,6 +65,25 @@ public class MainController {
         }
         return "returnedbooks";
     }
+    @RequestMapping("/borrow/{id}")
+    public String borrowedbooks(@PathVariable("id") long id, Model model){
+        model.addAttribute("book", addbooksrepo.findOne(id));
+        Addbooks ad = addbooksrepo.findOne(id);
+        ad.setBookavailable(false);
+        addbooksrepo.save(ad);
+        //model.addAttribute("borrowed", ad);
+        return "redirect:/borrowbook";
+
+    }
+    @RequestMapping("/return/{id}")
+    public String returnedbooks(@PathVariable("id") long id, Model model){
+        model.addAttribute("addedbooks", addbooksrepo.findOne(id));
+        Addbooks ad = addbooksrepo.findOne(id);
+        ad.setBookavailable(true);
+        addbooksrepo.save(ad);
+        //model.addAttribute("returned", ad);
+        return "redirect:/returnedbooks";
+    }
 
 }
 
