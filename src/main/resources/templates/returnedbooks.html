@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="homebody" lang="en" xmlns:th=" www.thymeleaf.org">
+<html class="homebody" lang="en" xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <title>Libraby of congress</title>
@@ -15,7 +15,7 @@
     <div class="col-sm-7">
         <h1>Library of congress books</h1>
 
-        <ul id="addressbooks" th:each="addedbooks : ${addedbooks}" type="none" >
+        <ul id="addressbooks" th:each="addedbooks : ${returnedbook}" type="none" >
 
             <li th:inline="text">
                 Title: [[${addedbooks.booktitle}]] <br/>
@@ -28,6 +28,5 @@
         <br/><br/>
     </div>
 </div>
-<div th:replace="base::footerlinks"></div>
 </body>
 </html>

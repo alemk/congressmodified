@@ -19,19 +19,21 @@
             <span th:if="${#fields.hasErrors('booktitle')}" th:errors="*{booktitle}"></span>
             <label>Title: </label>
                 <input type="text" th:field="*{booktitle}" />
-
+            <br/>
             <span th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></span>
             <label>Author: </label>
                 <input type="text" th:field="*{author}" />
-
+            <br/>
             <label>Year of Publication: </label>
                 <input type="date" th:field="*{yearOfPublication}" />
+            <br/>
             <label>ISBN: </label>
                 <input type="text" th:field="*{isbnNumber}" />
+            <br/>
             <label>Available: </label>
-                <input type="radio" th:field="*{bookavailable}" value="yes" checked="checked"/>
-
-            <input type="submit" value="submit" name="Add book"/>
+                <input type="checkbox" th:field="*{bookavailable}" value="yes"/>
+            <br/>
+                <input type="submit" value="submit" name="Add book"/>
         </form>
     </div> <!-- form section ends here -->
 

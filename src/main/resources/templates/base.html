@@ -16,8 +16,8 @@
                 <li><a th:href="@{'/'}">home</a></li>
                 <li><a th:href="@{'addlibrarybooks'}">Add book</a></li>
                 <li><a th:href="@{'listallbooks'}">List books</a></li>
-                <li><a th:href="@{'borrowbook'}">Borrow books</a></li>
-                <li><a th:href="@{'returnbook'}">Return book</a></li>
+                <li><a th:href="@{'borrowbook'}">Borrowed books</a></li>
+                <li><a th:href="@{'returnedbooks'}">Returned book</a></li>
             </ul>
         </div>
     </nav>
@@ -25,6 +25,7 @@
 
 <div th:fragment="footerlinks"><!-- footer nav begins here-->
     <div class="row">
+        <div class="col-sm-5"></div>
         <div class="col-sm center">
             Librrary of congress @Copyright.2018
         </div>

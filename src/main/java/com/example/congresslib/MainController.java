@@ -2,12 +2,13 @@ package com.example.congresslib;
 
 import com.example.congresslib.repository.AddBooksRepository;
 import com.example.congresslib.repository.Borrowbookrepo;
-import com.example.congresslib.repository.ListAllBooksrepo;
+import com.example.congresslib.repository.Returnedbooksrepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,7 +19,7 @@ public class MainController {
     @Autowired
     AddBooksRepository addbooksrepo;
     @Autowired
-    ListAllBooksrepo listallbooksrepo;
+    Returnedbooksrepository listallbooksrepo;
     @Autowired
     Borrowbookrepo borrowbookrepo;
 
@@ -45,8 +46,29 @@ public class MainController {
     public String listallbooks(Model model){
         model.addAttribute("addedbooks", addbooksrepo.findAll());
         return "listallbooks";
-    }/*
-    @RequestMapping("/borrowbook/{id}")
+    }
+    @RequestMapping("/borrowbook")
+    public String borrowedbooks(Model model){
+        Iterable<Addbooks> addbooks = addbooksrepo.findAll();
+        for(Addbooks ab:addbooks){
+            if(ab.getBookavailable()==false)
+                model.addAttribute("borrowedbooks",ab);
+        }
+        return "borrowbook";
+    }
+    @RequestMapping("/returnedbooks")
+    public String returnedbooks(Model model){
+        Iterable<Addbooks> addbooks = addbooksrepo.findAll();
+        for(Addbooks rb:addbooks){
+            if(rb.getBookavailable()==true)
+                model.addAttribute("returnedbook",rb);
+        }
+        return "returnedbooks";
+    }
+
+}
+
+    /*@RequestMapping("/borrowbook/{id}")
     public String borrowbook(@PathVariable("booktitle") long id, Model model){
         model.addAttribute("booklist", listallbooksrepo.findOne(id));
         return "borrowbook";
@@ -58,6 +80,6 @@ public class MainController {
     }
         borrowbookrepo.save(borrowers);
         return "redirect:/";
-    }*/
-}
+    }**/
+
 
