@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class MainController {
@@ -49,6 +51,33 @@ public class MainController {
     }
     @RequestMapping("/borrowbook")
     public String borrowedbooks(Model model){
+        Iterable<Addbooks> books = addbooksrepo.findAll();
+        List<Addbooks> bb = new ArrayList<>();
+        for(Addbooks ab:books){
+            if(ab.getBookavailable()==false)
+                    bb.add(ab);
+        }
+        model.addAttribute("borrowedbooks",bb);
+        return "borrowbook";
+    }
+    @RequestMapping("/returnedbooks")
+    public String returnedbooks(Model model) {
+        Iterable<Addbooks> addbooks = addbooksrepo.findAll();
+        List<Addbooks> retbooks = new ArrayList<>();
+        for (Addbooks rb : addbooks) {
+            if (rb.getBookavailable() == true) {
+                retbooks.add(rb);
+            }
+            model.addAttribute("returnedbook", retbooks);
+        }
+        return "returnedbooks";
+    }
+
+
+
+   /*
+   @RequestMapping("/borrowbook")
+    public String borrowedbooks(Model model){
         Iterable<Addbooks> addbooks = addbooksrepo.findAll();
         for(Addbooks ab:addbooks){
             if(ab.getBookavailable()==false)
@@ -56,15 +85,16 @@ public class MainController {
         }
         return "borrowbook";
     }
-    @RequestMapping("/returnedbooks")
-    public String returnedbooks(Model model){
+
+
+   public String returnedbooks(Model model){
         Iterable<Addbooks> addbooks = addbooksrepo.findAll();
         for(Addbooks rb:addbooks){
             if(rb.getBookavailable()==true)
                 model.addAttribute("returnedbook",rb);
         }
-        return "returnedbooks";
-    }
+        return "returnedbooks";}*/
+
     @RequestMapping("/borrow/{id}")
     public String borrowedbooks(@PathVariable("id") long id, Model model){
         model.addAttribute("book", addbooksrepo.findOne(id));

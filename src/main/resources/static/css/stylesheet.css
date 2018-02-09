@@ -1,0 +1,21 @@
+.homebody {
+    background-image: url("/images/congress.jpeg");
+    background-repeat: repeat;
+}
+.headermargin{
+    margin-left: 20px;
+}
+.img-flag{
+    height: 200px;
+    width: 300px;
+}
+.frontpage{
+    font-family: sans-serif;
+    color: rgba(0, 0, 0, 0.99);
+    font-size: 18px;
+    font-weight: bold;
+    margin: 11px 4px;
+    min-width: 54px;
+
+}
+}
